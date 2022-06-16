@@ -4,6 +4,12 @@ Router::get("", function() {
     include "views/home.php";
 });
 
+Router::get("user", function() {
+    $userController = new UserController;
+    $user = $userController->getUser($_SESSION["username"]);
+    include "views/user.php";
+});
+
 Router::get("login", function() {
     include "views/login.php";
 });
@@ -16,7 +22,8 @@ Router::post("login", function() {
     $userController = new UserController;
 
     if(isset($_POST['create'])) {
-        $userController->createUser($_POST);
+        $file = $_FILES['img'];
+        $userController->createUser($_POST, $file);
     } else if (isset($_POST['login'])) {
         $userController->verifyLoginUser($_POST);
     }

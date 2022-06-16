@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 16, 2022 at 04:17 AM
+-- Generation Time: Jun 16, 2022 at 09:04 AM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -92,8 +92,17 @@ CREATE TABLE `users` (
   `role` tinyint(4) NOT NULL DEFAULT '2',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_updated` datetime DEFAULT NULL,
-  `img` varchar(255) NOT NULL
+  `img` varchar(255) NOT NULL,
+  `money` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `role`, `date_created`, `date_updated`, `img`, `money`) VALUES
+(5, 'admin', 'admin@gmail.com', '$2y$10$Jmn/6WuYwvE1Q9ynlb2IaO9NuAfXZoKr5TAbGlBHkezlmbyM4xrwC', 2, '2022-06-16 15:05:30', NULL, '1.png', 100000),
+(7, 'kietnguyen', 'kietnguyen@gmail.com', '$2y$10$n5otTs/lLhApmDF6GmJz/.1vVSqcuP6vcsPPnjcDGHLXTBuMfNaBu', 2, '2022-06-16 15:47:27', NULL, 'images/wedding_62aaee1f09cd7.png', 0);
 
 --
 -- Indexes for dumped tables
@@ -161,7 +170,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

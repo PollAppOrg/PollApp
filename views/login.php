@@ -3,7 +3,7 @@
     <div class="col-md-6 pr-5">
         <h3 class="font-weight-light">Create Account</h3>
         <hr>
-        <form action="login" method="post">
+        <form action="login" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control"  placeholder="Enter a username..." name="username" value="">
