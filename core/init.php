@@ -1,9 +1,9 @@
 <?php
 // start session
-// session_start();
-// if(!isset($_SESSION['logged_in'])) {
-//     $_SESSION['logged_in'] = false;
-// }
+session_start();
+if(!isset($_SESSION['logged_in'])) {
+    $_SESSION['logged_in'] = false;
+}
 
 include_once "core/DB.php";
 DB::getInstance();
