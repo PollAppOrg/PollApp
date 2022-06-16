@@ -6,10 +6,10 @@ class UserController extends Controller {
         parent::__construct();
     }
 
-    public function createUser($user) {
+    public function createUser($user, $file) {
         $userObj = new UserModel($this->conn);
         
-        if($userObj->validateNewUser($user)->success()) {
+        if($userObj->validateNewUser($user, $file)->success()) {
             if($userObj->createNewUser()->success()) {
                 $this->loginUser($userObj);
             } else {
@@ -31,13 +31,12 @@ class UserController extends Controller {
             $this->loginUser($userObj);
         } else {
             //output errors
-            // header("location:" . ROOT . "/login");
+            //header("location:" . ROOT . "/login");
             var_dump($userObj->errors);
         }
     } 
 
     
-
     public function loginUser($user) {
         $_SESSION['username'] = $user->user_name;
         $_SESSION['user_id'] = $user->user_id;
@@ -45,5 +44,16 @@ class UserController extends Controller {
         $_SESSION['logged_in'] = true;
         // send user back to homepage 
         header("location: " . ROOT);
+    }
+
+    public function getUser($username) {
+        $userObj = new UserModel($this->conn);
+        if($userObj->getUser($username) !== false) {
+            return $userObj;
+        } else {
+            //output errors
+            //header("location:" . ROOT . "/login");
+            var_dump($userObj->errors);
+        }
     }
 }
