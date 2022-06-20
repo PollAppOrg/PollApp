@@ -24,6 +24,12 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="<?= ROOT ?>">Home<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT . "product" ?>">Product<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT . "service" ?>">Service<span class="sr-only">(current)</span></a>
+                </li>
             <?php if($_SESSION['logged_in'] == true): ?>
                 </li>
                     <a class="nav-link" href="user"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>

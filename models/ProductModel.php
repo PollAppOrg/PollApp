@@ -9,6 +9,7 @@ class ProductModel extends Model {
     private $product_provider_id;
     private $product = [];
     private $products = [];
+    public $errors = [];
 
     public function createProduct() {
                 
