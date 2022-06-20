@@ -1,4 +1,5 @@
 <div class="container my-5">
+    <?php if($_SESSION["logged_in"] === false): ?>
     <div class="row">
     <div class="col-md-6 pr-5">
         <h3 class="font-weight-light">Create Account</h3>
@@ -63,5 +64,8 @@
             <button class="btn btn-success btn-block" type="submit" name="login" value="true"><i class="fa-solid fa-circle-plus mr-2"></i>Login</button>
         </form>
     </div>
+    <?php else: ?>
+    You are already logged in!
+    <?php endif ?>
     </div>
 </div>
