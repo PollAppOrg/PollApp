@@ -6,9 +6,13 @@
                 <div class="form-group">
                   <label for="pName">Product Name</label>
                   <input type="text" name="pName" id="pName" class="form-control" placeholder="" aria-describedby="helpId">
-                  <small id="helpId" class="text-muted">Product name here...</small>
+                </div>
+                <div class="form-group">
+                  <label for="pDesc">Product Description</label>
+                  <input type="text" name="pDesc" id="pDesc" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
             </form>
+            <a href="<?php ROOT . "product"?>" class="btn btn-warning">Back</a>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
     <hr class="my-2">
     <p>More info</p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href="<?php ROOT . "product/create"?>" role="button">Click here to add a new product</a>
+        <a class="btn btn-primary btn-lg" href="<?php ROOT ?>" role="button">Click here to add a new product</a>
     </p>
 </div>
 
