@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Title</title>
+    <title>Wedding App</title>
 </head>
 <body class="mt-5 pt-2">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">    
-        <a class="navbar-brand" href="<?php echo ROOT ?>"> <i class="fa fa-book" aria-hidden="true"></i> ITEC Blog</a>
+        <a class="navbar-brand" href="<?php echo ROOT ?>"> <i class="fa fa-envelope" aria-hidden="true"></i> Wedding App</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

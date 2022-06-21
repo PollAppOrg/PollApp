@@ -38,3 +38,7 @@ Router::post("login", function() {
         $userController->verifyLoginUser($_POST);
     }
 });
+
+if(Router::$found === false) {
+    include "views/_404.php";
+}
