@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +24,14 @@
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
+                <li class="nav-item">
+
                     <a class="nav-link" href="<?= ROOT ?>">
+                    
                     <i class="fa-solid fa-house d-flex justify-content-center"></i>
-                    Home<span class="sr-only">(current)</span></a>
+                    Home<span class="sr-only">(current)</span>
+                
+                    </a>
                 </li>
                 <li class="nav-item">
                 
@@ -39,18 +40,18 @@
                     Polls<span class="sr-only">(current)</span></a>
                 </li>
             <?php if($_SESSION['logged_in'] == true): ?>
-                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
                 </li>
                 
-                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
                 </li>
-                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>user/logout"> <i class="fa-solid fa-right-from-bracket  d-flex justify-content-center"></i>Logout<span class="sr-only">(current)</span></a>
                 </li>
             <?php else: ?>
-                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                 </li>
             <?php endif; ?>

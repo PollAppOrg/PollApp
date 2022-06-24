@@ -1,11 +1,7 @@
 <?php include "inc/head.php" ?>
 <div class="container my-5">
     <?php if($_SESSION["logged_in"] === false): ?>
-    <?php if(!empty($errors)): ?>
-        <div class="alert alert-danger">
-        <?php var_dump($errors); ?>
-        </div>
-    <?php endif; ?>
+    <?php include "views/inc/error.php" ?>
     
     <div class="row">
     <div class="col-md-6 pr-5">
