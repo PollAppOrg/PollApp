@@ -3,7 +3,7 @@
     <?php if($_SESSION["logged_in"] === false): ?>
     <?php if(!empty($errors)): ?>
         <div class="alert alert-danger">
-        <?php var_dump($errors); ?>
+        <!-- <?php var_dump($errors); ?> -->
         </div>
     <?php endif; ?>
     
