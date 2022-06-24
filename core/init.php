@@ -9,7 +9,7 @@ if(!isset($_SESSION['logged_in'])) {
 
 include_once "core/DB.php";
 DB::getInstance();
-DB::connect("localhost", "root", "root", "2022PollAppDB"); //pw = "" for XAMP
+DB::connect("localhost", "root", "", "2022PollAppDB"); //pw = "" for XAMP
 $conn = DB::getConn();
 // auto load classes
 spl_autoload_register(function($className) {
