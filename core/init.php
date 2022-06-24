@@ -2,7 +2,7 @@
 ob_start();
 // start session
 session_start();
-if(!isset($_SESSION['logged_in'])) {
+if(!isset($_SESSION['user_id'])) {
     $_SESSION['logged_in'] = false;
     $_SESSION['user_id'] = -1;
 }
