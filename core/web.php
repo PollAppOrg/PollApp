@@ -20,23 +20,23 @@ Router::get("product/create", function() {
 
 });
 
-Router::get("login", function() {
+Router::get("user/login", function() {
     include "views/login.php";
 });
 
-Router::get("logout", function() {
+Router::get("user/logout", function() {
     include "views/logout.php";
 });
 
-Router::post("login", function() {
+Router::post("user/create", function() {
     $userController = new UserController;
+    $file = $_FILES['img'];
+    $userController->create($_POST, $file);
+});
 
-    if(isset($_POST['create'])) {
-        $file = $_FILES['img'];
-        $userController->createUser($_POST, $file);
-    } else if (isset($_POST['login'])) {
-        $userController->verifyLoginUser($_POST);
-    }
+Router::post("user/login", function() {
+    $userController = new UserController;
+    $userController->login($_POST);
 });
 
 if(Router::$found === false) {

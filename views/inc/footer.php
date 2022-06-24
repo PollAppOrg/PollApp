@@ -1,6 +1,6 @@
     <footer class="bg-dark text-white mt-4">
         <div class="container py-4">
-        <h3>Wedding App</h3> 
+        <h3>Poll App</h3> 
         </div>
     </footer>
     <script src="main.js"></script>

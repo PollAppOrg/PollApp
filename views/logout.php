@@ -3,4 +3,4 @@
 $_SESSION = [];
 session_destroy();
 session_start();
-header("Location: ". ROOT);
+Router::redirect("user/login");

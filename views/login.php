@@ -1,10 +1,17 @@
+<?php include "inc/head.php" ?>
 <div class="container my-5">
     <?php if($_SESSION["logged_in"] === false): ?>
+    <?php if(!empty($errors)): ?>
+        <div class="alert alert-danger">
+        <?php var_dump($errors); ?>
+        </div>
+    <?php endif; ?>
+    
     <div class="row">
     <div class="col-md-6 pr-5">
         <h3 class="font-weight-light">Create Account</h3>
         <hr>
-        <form action="login" method="post" enctype="multipart/form-data">
+        <form action="<?=ROOT?>user/create" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control"  placeholder="Enter a username..." name="username" value="">
@@ -34,19 +41,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="img">Image</label>
+                <label for="img">Image (optional)</label>
                 <input type="file" name="img">
                 <div class="invalid-feedback">
                 Image invalid
                 </div>
             </div>
+            <?php CSRF::outputToken(); ?>
             <button class="btn btn-primary btn-block" type="submit" name="create" value="true"><i class="fa-solid fa-circle-plus mr-2"></i>Create Account</button>
         </form>
     </div>
     <div class="col-md-6 pl-5 border-left border-dark">
         <h3 class="font-weight-light">Login to Account</h3>
           <hr>
-        <form action="login" method="post">
+        <form action="<?=ROOT?>user/login" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control"  placeholder="Enter a username..." name="username"  autocomplete="off" value="">
@@ -61,6 +69,7 @@
                 Password invalid!
                 </div>
             </div>
+            <?php CSRF::outputToken(); ?>
             <button class="btn btn-success btn-block" type="submit" name="login" value="true"><i class="fa-solid fa-circle-plus mr-2"></i>Login</button>
         </form>
     </div>
@@ -69,3 +78,4 @@
     <?php endif ?>
     </div>
 </div>
+<?php include "inc/footer.php" ?>
