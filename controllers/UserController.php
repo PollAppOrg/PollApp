@@ -6,45 +6,32 @@ class UserController extends Controller {
         parent::__construct();
     }
 
-    public function createUser($user, $file) {
+    public function create($user, $file) {
         $userObj = new UserModel($this->conn);
-        
         if($userObj->validateNewUser($user, $file)->success()) {
             if($userObj->createNewUser()->success()) {
-                $this->loginUser($userObj);
+                $userObj->setLoginSession();
             } else {
                 //output errors
-                // header("location:" . ROOT . "/login");
-                var_dump($userObj->errors);
+                $errors = $userObj->errors;
+                include "views/login.php"; 
             }    
         } else {
-            //output errors
-            // header("location:" . ROOT . "/login");
-            var_dump($userObj->errors);
+            $errors = $userObj->errors;
+            include "views/login.php"; 
         }
     } 
 
-    public function verifyLoginUser($user) {
+    public function login($user) {
         $userObj = new UserModel($this->conn);
         
         if($userObj->validateLoginUser($user)->success()) {
-            $this->loginUser($userObj);
+            $userObj->setLoginSession();
         } else {
-            //output errors
-            //header("location:" . ROOT . "/login");
-            var_dump($userObj->errors);
+            $errors = $userObj->errors;
+            include "views/login.php"; 
         }
     } 
-
-    
-    public function loginUser($user) {
-        $_SESSION['username'] = $user->user_name;
-        $_SESSION['user_id'] = $user->user_id;
-        $_SESSION['role'] = $user->user_role;
-        $_SESSION['logged_in'] = true;
-        // send user back to homepage 
-        header("location: " . ROOT);
-    }
 
     public function getUser($username) {
         $userObj = new UserModel($this->conn);

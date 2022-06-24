@@ -7,7 +7,7 @@ if(!isset($_SESSION['logged_in'])) {
 
 include_once "core/DB.php";
 DB::getInstance();
-DB::connect("localhost", "root", "root", "2022WeddingAppDB"); //pw = "" for XAMP
+DB::connect("localhost", "root", "root", "2022PollAppDB"); //pw = "" for XAMP
 $conn = DB::getConn();
 // auto load classes
 spl_autoload_register(function($className) {
@@ -17,5 +17,7 @@ spl_autoload_register(function($className) {
         include_once "controllers/". $className . ".php";
     } elseif(file_exists("models/". $className . ".php")) {
         include_once "models/". $className . ".php";
-    }
+    } elseif(file_exists("middleware/" . $className . ".php")) {
+        include_once "middleware/" . $className . ".php";
+    } 
 });

@@ -4,52 +4,43 @@ class UserModel extends Model {
    public $user_id;
    public $user_name;
    public $user_role = 2;
-   public $user_img = "1.png";
+   public $user_img;
    public $user_email;
    public $user_money;
-   private $user_password_hash;
+   private $user_hash;
    private $user_password;
    private $user_password_confirm;
    private $user = [];
    private $users = [];
    public $errors = [];
 
-   public function createNewUser() {
-      $this->user_password_hash = password_hash($this->user_password, PASSWORD_DEFAULT);
-      $sql = "INSERT INTO users (username, email, password_hash, img) VALUES (?, ?, ?, ?)";
-      $stmt = $this->conn->prepare($sql);
-      $stmt->bind_param("ssss", $this->user_name, $this->user_email, $this->user_password_hash, $this->user_img);
-      $stmt->execute();
-      if($stmt->affected_rows == 1) {
-         $this->user_id = $stmt->insert_id;
-      } else {
-         $this->errors['insert_user_err'] = true;
-      }
-
-      return $this;
-   }
-
-   public function getUser($username) {
-      $sql = "SELECT * 
-            FROM users
-            WHERE username = ?";
+   public function getUserByName($username) {
+      $sql = "SELECT * FROM users WHERE users.username = ?";
       $stmt = $this->conn->prepare($sql);
       $stmt->bind_param("s", $username);
       $stmt->execute();
       $result = $stmt->get_result();
-      if($result->num_rows == 1) {
-         $this->user = $result->fetch_assoc();
-         $this->user_id = $this->user["id"];
-         $this->user_name = $this->user["username"];
-         $this->user_email = $this->user["email"];
-         $this->user_role = $this->user["role"];
-         $this->user_money = $this->user["money"];
-         $this->user_password_hash = $this->user["password_hash"]; 
-         $this->user_img = $this->user["img"];
-         return $this;
+      $this->user = $result->fetch_assoc();
+      return $this;
+   } 
+
+   public function checkUserExist($username) {
+      return !empty($this->getUserByName($username)->user);
+   } 
+
+   public function createNewUser() {
+      $this->user_hash = password_hash($this->user_password, PASSWORD_DEFAULT);
+      $sql = "INSERT INTO users (username, email, password_hash, img) VALUES (?, ?, ?, ?)";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->bind_param("ssss", $this->user_name, $this->user_email, $this->user_hash, $this->user_img);
+      $stmt->execute();
+      if($stmt->affected_rows == 1) {
+         $this->getUserByName($this->user_name);
       } else {
-         return false;
+         $this->errors['insert_user_err'] = "Cannot create new user";
       }
+
+      return $this;
    }
 
    public function validateNewUser($user, $file) {
@@ -59,26 +50,29 @@ class UserModel extends Model {
       $this->user_password_confirm = htmlspecialchars($user['password_confirm']);
    
       // check username > 5 chars
-      if(strlen($this->user_name) <  2 || empty($this->user_name)) {
-         $this->errors['username_err'] = true;
+      if(strlen($this->user_name) <  5 || empty($this->user_name)) {
+         $this->errors['username_err'] = "Username not valid";
       }
+
+      if($this->checkUserExist($this->user_name)) {
+         $this->errors['username_err'] = "Username already exist";
+      }
+
       // check email is valid
       if(!filter_var($this->user_email, FILTER_VALIDATE_EMAIL)) {
-         $this->errors['email_err'] = true;
+         $this->errors['email_err'] = "Email not valid";
       }
       // check password > 5 chars
       if(strlen($this->user_password) < 5) {
-         $this->errors['password_err'] = true;
+         $this->errors['password_err'] = "Password not valid";
       }
       // check password a = password b
       if($this->user_password != $this->user_password_confirm) {
-         $this->errors['password_confirm_err'] = true;
+         $this->errors['password_confirm_err'] = "Password confirmed not valid";
       }
-
-      $this->user_img = $this->validateFile($file);
-      if($this->user_img === false) {
-         $this->errors['image_err'] = true;
-         $this->user_img = "1.png";
+      
+      if($this->validateFile($file) === false) {
+         $this->errors['image_err'] = "Image not valid";
       }
 
       return $this;
@@ -88,19 +82,12 @@ class UserModel extends Model {
       $this->user_name = htmlspecialchars($user['username']);
       $this->user_password = htmlspecialchars($user['password']);
 
-      if(strlen($this->user_name) <  2 || empty($this->user_name)) {
-         $this->errors['username_err'] = true;
-      }
-      // check password > 5 chars
-      if(strlen($this->user_password) < 5) {
-         $this->errors['password_err'] = true;
+      if(!$this->checkUserExist($this->user_name)) {
+         $this->errors['username_err'] = "User not found";
       }
 
-      if($this->getUser($user['username']) === false) {
-         $this->errors['user_err'] = "User not found";
-      }
-
-      if(!password_verify($this->user_password, $this->user_password_hash)) {
+      $this->user_hash = $this->user["password_hash"];
+      if(!password_verify($this->user_password, $this->user_hash)) {
          $this->errors['password_err'] = "Password is wrong";
       }    
 
@@ -108,6 +95,11 @@ class UserModel extends Model {
    }
 
    public function validateFile($file) {
+      if($file['size'] === 0) {
+         $this->user_img = "pollapp_user.png";
+         return $this;
+      }
+
       // validate file
       $errors = [];
       if($file['error'] === 0) {
@@ -125,12 +117,13 @@ class UserModel extends Model {
          // if there are no errors, rename file and move it
          if(empty($errors)) {
             // rename file
-            $new_name = uniqid("wedding_") . "." . $file_ext;
+            $new_name = uniqid("pollapp_") . "." . $file_ext;
             $dest_1 =  "images/" . $new_name;
             $dest_2 = "./public/" . $dest_1;
             // move to images/
             if(move_uploaded_file($file['tmp_name'], $dest_2)) {
-               return $dest_1;
+               $this->user_img = $dest_1;
+               return $this;
             } else {
                return false;
             }
@@ -138,11 +131,20 @@ class UserModel extends Model {
             return false;
          }
       } else {
-          return false;
+         return false;
       }
    }
 
    public function success() {
       return empty($this->errors);
    }
+
+   public function setLoginSession() {
+      $_SESSION['username'] = $this->user["username"];
+      $_SESSION['user_id'] = $this->user["id"];
+      $_SESSION['role'] = $this->user["role"];
+      $_SESSION['logged_in'] = true;
+      // send user back to homepage 
+      Router::redirect("");
+  }
 }
