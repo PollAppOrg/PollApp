@@ -47,6 +47,10 @@ Router::post("poll/delete", function() {
     $pollController->delete($_POST);
 });
 
+Router::get("user/signup", function() {
+    include "views/sign_up.php";
+});
+
 Router::get("user/login", function() {
     include "views/login.php";
 });

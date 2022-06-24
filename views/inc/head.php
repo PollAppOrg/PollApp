@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +25,13 @@
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-flex align-items-center">
+
                     <a class="nav-link" href="<?= ROOT ?>">
+                    
                     <i class="fa-solid fa-house d-flex justify-content-center"></i>
-                    Home<span class="sr-only">(current)</span></a>
+                    Home<span class="sr-only">(current)</span>
+                
+                    </a>
                 </li>
                 <li class="nav-item d-flex align-items-center ">
                 
@@ -51,6 +52,7 @@
                 </li>
             <?php else: ?>
                 <li class="nav-item d-flex align-items-center ">
+
                     <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                 </li>
             <?php endif; ?>

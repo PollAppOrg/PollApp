@@ -1,5 +1,6 @@
 <?php include __DIR__ . "/../inc/head.php" ?>
 <?php if($_SESSION['logged_in']): ?>
+<?php include "views/inc/error.php" ?>
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
