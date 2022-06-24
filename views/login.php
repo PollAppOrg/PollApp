@@ -3,7 +3,6 @@
     <?php if($_SESSION["logged_in"] === false): ?>
     <?php include "views/inc/error.php" ?>
     
-  
     <div class="col-md-6  border-dark offset-md-3">
         <h3 class="font-weight-light d-flex justify-content-center ">Login to Account</h3>
           <hr>

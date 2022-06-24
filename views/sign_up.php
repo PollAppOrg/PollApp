@@ -1,5 +1,8 @@
 <?php include "inc/head.php" ?>
 <div class="container my-5">
+    <?php if($_SESSION["logged_in"] === false): ?>
+
+    <?php include "views/inc/error.php" ?>
     <div class="row">
     <div class="col-md-6 pr-5 offset-md-3">
         <h3 class="font-weight-light d-flex justify-content-center">Create Account</h3>
@@ -45,5 +48,8 @@
         </form>
         </div>
     </div>
+    <?php else: ?>
+    You are already logged in!
+    <?php endif ?>
 </div>
 <?php include "inc/footer.php" ?>
