@@ -99,6 +99,28 @@ class PollModel extends Model {
         return $this;
     }
 
+    public function update($poll) {
+        var_dump($poll);
+        $this->poll_title = htmlspecialchars($poll['title']);
+        $this->poll_desc = htmlspecialchars($poll['desc']);
+        $this->poll_option1 = htmlspecialchars($poll['option1']);
+        $this->poll_option2 = htmlspecialchars($poll['option2']);
+        $this->poll_id = $poll['id'];
+
+        $sql = "UPDATE polls 
+                SET title = ?, description = ?, option_1 = ?, option_2 = ?
+                WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssssi", $this->poll_title, $this->poll_desc, $this->poll_option1, $this->poll_option2, $this->poll_id);
+        $stmt->execute();
+        if($stmt->affected_rows !== 1) {
+            $this->errors['vote_err'] = "Vote failed!";
+        } else {
+            $this->poll_id = $stmt->insert_id;
+        }
+        return $this;
+    }
+
     public function delete($id) {
         // echo "deleting post ". $id;
         $sql = "DELETE FROM polls where id = ?";

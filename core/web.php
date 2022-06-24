@@ -33,6 +33,11 @@ Router::post("poll/create", function() {
     $pollController->create($_POST);
 });
 
+Router::post("poll/update", function() {
+    $pollController = new PollController;
+    $pollController->update($_POST);
+});
+
 Router::post("poll/delete", function() {
     // var_dump("here");
     $pollController = new PollController;

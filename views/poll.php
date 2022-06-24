@@ -8,7 +8,7 @@
     <?php if(!empty($polls)): ?>
         <div class="row mt-3">
             <?php foreach($polls as $poll): ?>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="card text-left">
                         <img class="card-img-top" src="holder.js/100px180/" alt="">
                         <div class="card-body">

@@ -65,4 +65,16 @@ class PollController extends Controller {
             include "views/_403.php";
         }
     }
+
+    public function update($poll) {
+        $pollObj = new PollModel($this->conn);
+        $pollObj->fetchPoll($poll['id']);
+        if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['user_role'] == 1) {
+            if($pollObj->update($poll)->success()) {
+                Router::redirect("poll/get/" . $poll['id']);
+            }
+        } else {
+            include "views/_403.php";
+        }
+    }
 }
