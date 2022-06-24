@@ -9,7 +9,7 @@
             <a class="btn btn-primary btn-lg mr-3 mt-3" href="<?=ROOT?>poll/create" role="button">Create your new poll</a>
             <a class="btn btn-warning btn-lg mt-3" href="<?=ROOT?>poll" role="button">Vote now!</a>
             <?php else: ?>
-            <a class="btn btn-primary btn-lg" href="<?=ROOT?>login" role="button">Login to create your first poll</a> 
+            <a class="btn btn-primary btn-lg" href="<?=ROOT?>user/login" role="button">Login to create your first poll</a> 
             <?php endif; ?>
         </p>
     </div>
