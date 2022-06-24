@@ -24,7 +24,7 @@
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
 
                     <a class="nav-link" href="<?= ROOT ?>">
                     
@@ -33,25 +33,26 @@
                 
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center ">
                 
                     <a class="nav-link" href="<?= ROOT . "poll" ?>">
                     <i class="fa-solid fa-check-to-slot d-flex justify-content-center"></i>
                     Polls<span class="sr-only">(current)</span></a>
                 </li>
             <?php if($_SESSION['logged_in'] == true): ?>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center ">
                     <a class="nav-link" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
                 </li>
                 
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center ">
                     <a class="nav-link" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center ">
                     <a class="nav-link" href="<?=ROOT?>user/logout"> <i class="fa-solid fa-right-from-bracket  d-flex justify-content-center"></i>Logout<span class="sr-only">(current)</span></a>
                 </li>
             <?php else: ?>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center ">
+
                     <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                 </li>
             <?php endif; ?>

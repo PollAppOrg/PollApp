@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // start session
 session_start();
 if(!isset($_SESSION['logged_in'])) {

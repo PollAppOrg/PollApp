@@ -23,6 +23,9 @@ Router::get("poll/get/{id}", function($id) {
         include "views/inc/login_redirect.php";
     }
 });
+Router::get("user/signup", function() {
+    include "views/sign_up.php";
+});
 
 Router::get("poll/create", function() {
     include "views/poll/create.php";
