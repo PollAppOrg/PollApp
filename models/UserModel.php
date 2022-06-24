@@ -10,7 +10,7 @@ class UserModel extends Model {
    private $user_hash;
    private $user_password;
    private $user_password_confirm;
-   private $user = [];
+   public $user = [];
    private $users = [];
    public $errors = [];
 
@@ -96,7 +96,7 @@ class UserModel extends Model {
 
    public function validateFile($file) {
       if($file['size'] === 0) {
-         $this->user_img = "pollapp_user.png";
+         $this->user_img = "images/pollapp_user.png";
          return $this;
       }
 

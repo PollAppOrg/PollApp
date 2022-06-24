@@ -1,6 +1,6 @@
 <?php
 
-class ProductController extends Controller {
+class PollController extends Controller {
     // properties
     
     // constructor

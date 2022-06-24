@@ -35,11 +35,9 @@ class UserController extends Controller {
 
     public function getUser($username) {
         $userObj = new UserModel($this->conn);
-        if($userObj->getUser($username) !== false) {
+        if($userObj->checkUserExist($username) !== false) {
             return $userObj;
         } else {
-            //output errors
-            //header("location:" . ROOT . "/login");
             var_dump($userObj->errors);
         }
     }
