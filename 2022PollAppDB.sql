@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 24, 2022 at 08:24 AM
+-- Generation Time: Jun 24, 2022 at 09:03 AM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `2022PollAppDB`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `polls`
+--
+
+CREATE TABLE `polls` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `option_1` varchar(255) NOT NULL,
+  `option_2` varchar(255) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_modified` datetime DEFAULT NULL,
+  `vote_1` int(11) NOT NULL,
+  `vote_2` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -44,12 +63,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `role`, `date_created`, `date_updated`, `img`, `money`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2y$10$Jmn/6WuYwvE1Q9ynlb2IaO9NuAfXZoKr5TAbGlBHkezlmbyM4xrwC', 1, '2022-06-16 15:05:30', NULL, 'pollapp_user.png', 100000),
-(10, 'admin2', 'admin@gmail.com', '$2y$10$fafn4FXhmbkaABJz.Jw8a.WY/Z05G1lsOrLqSHPQs90sstORvRT4e', 2, '2022-06-24 15:15:33', NULL, 'pollapp_user.png', 0);
+(1, 'admin', 'admin@gmail.com', '$2y$10$Jmn/6WuYwvE1Q9ynlb2IaO9NuAfXZoKr5TAbGlBHkezlmbyM4xrwC', 1, '2022-06-16 15:05:30', NULL, 'images/pollapp_user.png', 100000),
+(10, 'admin2', 'admin@gmail.com', '$2y$10$fafn4FXhmbkaABJz.Jw8a.WY/Z05G1lsOrLqSHPQs90sstORvRT4e', 2, '2022-06-24 15:15:33', NULL, 'images/pollapp_user.png', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `polls`
+--
+ALTER TABLE `polls`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -60,6 +85,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `polls`
+--
+ALTER TABLE `polls`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
