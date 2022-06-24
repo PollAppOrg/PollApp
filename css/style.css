@@ -4,25 +4,19 @@
 
 body {
   color: black !important;
-  margin: 140px 0px;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar {
   box-shadow: 0 4px 15px -5px gray;
 }
 
-footer {
-  position: fixed;
-  height: 100px;
-  bottom: 0;
-  width: 100%;
-}
 .home {
   background-image: url("./public/images/landing_page.jpg");
-  position: fixed;
   background-position: center;
   background-size: cover;
-  height: 80vh;
+  height: 90vh;
   width: 100vw;
 }
 .opacity {
