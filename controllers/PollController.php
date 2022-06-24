@@ -40,7 +40,7 @@ class PollController extends Controller {
            }
         } else {
             $errors = $pollObj->errors;
-            include "views/create_post.php";
+            include "views/poll/create.php";
         }
     }
 

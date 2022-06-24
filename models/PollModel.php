@@ -74,7 +74,7 @@ class PollModel extends Model {
         $this->poll_option1 = htmlspecialchars($poll['pOption1']);
         $this->poll_option2 = htmlspecialchars($poll['pOption2']);
         
-        if(empty($this->poll_title) || empty($this->poll_desc) || empty($this->poll_option2) || empty($this->poll_option1)) {
+        if(empty($this->poll_title) || empty($this->poll_option2) || empty($this->poll_option1)) {
             $this->errors['poll_form_err'] = "New poll fields cannot be empty!";
         }
         return $this;
