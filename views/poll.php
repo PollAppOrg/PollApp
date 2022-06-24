@@ -8,8 +8,8 @@
     <?php if(!empty($polls)): ?>
         <div class="row mt-3">
             <?php foreach($polls as $poll): ?>
-                <div class="col-md-4 mb-3">
-                    <div class="card text-left">
+                <div class="col-md-4 mb-3 d-flex">
+                    <div class="card text-left h-100">
                         <img class="card-img-top" src="https://vuipet.com/wp-content/uploads/2021/04/cho-corgi-mong-to.jpg" alt="">
                         <div class="card-body">
                             <a href=""></a>
