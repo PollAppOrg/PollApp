@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,30 +18,40 @@
     <title>Poll App</title>
 </head>
 <body class="mt-5 pt-2">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
     <div class="container">    
-        <a class="navbar-brand" href="<?php echo ROOT ?>"> <i class="fa fa-envelope" aria-hidden="true"></i>Poll App</a>
+        <a class="navbar-brand" href="<?php echo ROOT ?>"> <i class="fa fa-envelope" aria-hidden="true"></i> Poll App</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?= ROOT ?>">Home<span class="sr-only">(current)</span></a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= ROOT ?>">
+                    <i class="fa-solid fa-house d-flex justify-content-center"></i>
+                    Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT . "poll" ?>">Polls<span class="sr-only">(current)</span></a>
+                
+                    <a class="nav-link" href="<?= ROOT . "poll" ?>">
+                    <i class="fa-solid fa-check-to-slot d-flex justify-content-center"></i>
+                    Polls<span class="sr-only">(current)</span></a>
                 </li>
             <?php if($_SESSION['logged_in'] == true): ?>
                 </li>
-                    <a class="nav-link" href="<?=ROOT?>user"><i class="fa fa-user-circle" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
+                </li>
+                
+                </li>
+                    <a class="nav-link" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
                 </li>
                 </li>
-                    <a class="nav-link" href="<?=ROOT?>user/logout">Logout<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?=ROOT?>user/logout"> <i class="fa-solid fa-right-from-bracket  d-flex justify-content-center"></i>Logout<span class="sr-only">(current)</span></a>
                 </li>
             <?php else: ?>
                 </li>
-                    <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                 </li>
             <?php endif; ?>
             </ul>
