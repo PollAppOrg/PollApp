@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 24, 2022 at 09:03 AM
+-- Generation Time: Jun 24, 2022 at 01:27 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -36,9 +36,21 @@ CREATE TABLE `polls` (
   `option_2` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_modified` datetime DEFAULT NULL,
-  `vote_1` int(11) NOT NULL,
-  `vote_2` int(11) NOT NULL
+  `vote_1` int(11) NOT NULL DEFAULT '0',
+  `vote_2` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `polls`
+--
+
+INSERT INTO `polls` (`id`, `title`, `description`, `author_id`, `option_1`, `option_2`, `date_created`, `date_modified`, `vote_1`, `vote_2`) VALUES
+(4, 'What should I wear today?', 'soss2', 1, 'T-Shirt', 'Jackettu', '2022-06-24 18:51:20', NULL, 2, 1),
+(6, 'Love or Career?', 'sosowewq', 10, 'Love', 'Career', '2022-06-24 19:06:06', NULL, 2, 1),
+(7, 'Pineapple on pizza?', 'yes or no', 10, 'Yes', 'No', '2022-06-24 19:06:34', NULL, 0, 1),
+(8, 'Cat or Dog?', '...._....', 10, 'Cat', 'Dog', '2022-06-24 19:06:56', NULL, 0, 1),
+(9, 'Coke or Pepsi?', ':&gt;', 1, 'Coke', 'Pepsi', '2022-06-24 20:08:46', NULL, 1, 0),
+(10, 'Sleep or Study?', 'zzzzzzz', 1, 'Sleep', 'Study', '2022-06-24 20:09:08', NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -90,7 +102,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `polls`
 --
 ALTER TABLE `polls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`

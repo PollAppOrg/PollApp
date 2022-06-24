@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
-        <?php include "css/style.css"?>
+        <?php include 'css/style.css'; ?>
     </style>
-    <link rel="stylesheet" href="css/style.css">
     <title>Poll App</title>
 </head>
 <body class="mt-5 pt-2">

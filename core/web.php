@@ -11,12 +11,37 @@ Router::get("user", function() {
 });
 
 Router::get("poll", function() {
-    $userController = new UserController;
-    include "views/poll.php";
+    $pollController = new PollController;
+    $poll = $pollController->getPolls();
+});
+
+Router::get("poll/get/{id}", function($id) {
+    if($_SESSION['logged_in']) {
+        $pollController = new PollController;
+        $pollController->getPoll($id);
+    } else {
+        include "views/inc/login_redirect.php";
+    }
 });
 
 Router::get("poll/create", function() {
     include "views/poll/create.php";
+});
+
+Router::post("poll/create", function() {
+    $pollController = new PollController;
+    $pollController->create($_POST);
+});
+
+Router::post("poll/update", function() {
+    $pollController = new PollController;
+    $pollController->update($_POST);
+});
+
+Router::post("poll/delete", function() {
+    // var_dump("here");
+    $pollController = new PollController;
+    $pollController->delete($_POST);
 });
 
 Router::get("user/login", function() {
@@ -36,6 +61,11 @@ Router::post("user/create", function() {
 Router::post("user/login", function() {
     $userController = new UserController;
     $userController->login($_POST);
+});
+
+Router::post("poll/vote", function() {
+    $pollController = new PollController;
+    $pollController->vote($_POST);
 });
 
 if(Router::$found === false) {
