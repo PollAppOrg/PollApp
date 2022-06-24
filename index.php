@@ -4,6 +4,7 @@ include "core/init.php";
 
 define('ROOT', substr($_SERVER['PHP_SELF'], 0, -9));
 define('PUBLIC_ROOT', ROOT . "public/");
+$pageName = 'index'; 
 
 include "core/web.php";
 

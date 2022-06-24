@@ -1,4 +1,4 @@
-    <footer class="bg-dark text-white mt-4">
+    <footer class="bg-primary text-black mt-4">
         <div class="container py-4">
         <h3>Poll App</h3> 
         </div>

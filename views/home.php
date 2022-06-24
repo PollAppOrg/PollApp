@@ -1,6 +1,6 @@
 <?php include "inc/head.php" ?>
-<div class="container">
-    <div class="jumbotron mt-4">
+<div class="container my-5">
+    <div class="jumbotron h-100 mt-4">
         <h1 class="display-3">Welcome to our Wedding App</h1>
         <p class="lead">Jumbo helper text</p>
         <hr class="my-2">
