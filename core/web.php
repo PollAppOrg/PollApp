@@ -10,14 +10,13 @@ Router::get("user", function() {
     include "views/user.php";
 });
 
-Router::get("product", function() {
-    include "views/product.php";
-
+Router::get("poll", function() {
+    $userController = new UserController;
+    include "views/poll.php";
 });
 
-Router::get("product/create", function() {
-    include "views/product/create.php";
-
+Router::get("poll/create", function() {
+    include "views/poll/create.php";
 });
 
 Router::get("user/login", function() {

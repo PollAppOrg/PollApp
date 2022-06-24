@@ -25,10 +25,7 @@
                     <a class="nav-link" href="<?= ROOT ?>">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT . "product" ?>">Product<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT . "service" ?>">Service<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?= ROOT . "poll" ?>">Polls<span class="sr-only">(current)</span></a>
                 </li>
             <?php if($_SESSION['logged_in'] == true): ?>
                 </li>
