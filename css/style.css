@@ -17,7 +17,8 @@ body {
   background-position: center;
   background-size: cover;
   height: 90vh;
-  width: 100vw;
+  /* width: 100vw; */
+  opacity: 0.75;
 }
 .opacity {
   background-color: rgba(225, 225, 225, 0.527);
@@ -32,4 +33,15 @@ body {
     align-items: center;
     font-size: 25px;
   }
+}
+
+canvas {
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}
+
+
+footer {
+  position: relative;
 }
