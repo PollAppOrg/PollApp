@@ -54,11 +54,12 @@ class PollModel extends Model {
     }
 
     public function createNewPoll() {
-        $sql = "INSERT INTO polls (title, description, author_id, option_1,option_2) 
-                VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO polls (title, description, image, author_id, option_1,option_2) 
+                VALUES (?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ssiss", $this->poll_title, $this->poll_desc, $this->poll_author_id, $this->poll_option1, $this->poll_option2);
+        $stmt->bind_param("sssiss", $this->poll_title, $this->poll_desc,$this->poll_image, $this->poll_author_id, $this->poll_option1, $this->poll_option2);
         $stmt->execute();
+        var_dump($stmt); 
         if($stmt->affected_rows !== 1) {
             $this->errors['insert_err'] = "Poll was not created!";
         } else {
@@ -73,6 +74,7 @@ class PollModel extends Model {
         $this->poll_author_id = $_SESSION['user_id'];
         $this->poll_option1 = htmlspecialchars($poll['pOption1']);
         $this->poll_option2 = htmlspecialchars($poll['pOption2']);
+        $this->poll_image = htmlspecialchars($poll['image']);
         
         if(empty($this->poll_title) || empty($this->poll_option2) || empty($this->poll_option1)) {
             $this->errors['poll_form_err'] = "New poll fields cannot be empty!";

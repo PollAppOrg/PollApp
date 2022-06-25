@@ -32,11 +32,17 @@ class PollController extends Controller {
         }
     }
 
-    public function create($poll) {
+    public function create($poll, $file) {
         $pollObj = new PollModel($this->conn);
+        $file_dest = $this->validateFile($file);
+        if(isset($file_dest['error'])){
+            $errors = $file_dest['error'];
+            include "views/poll/create.php";
+        }
+        $poll['image'] = $file_dest['image'];
         if($pollObj->validatePoll($poll)->success()) {
-           if($pollObj->createNewPoll()->success()) {
-               Router::redirect("poll/get/" . $pollObj->poll_id);
+            if($pollObj->createNewPoll()->success()) {
+               Router::redirect("poll/get/" . $pollObj->poll_id); ## not seem to work
            }
         } else {
             $errors = $pollObj->errors;
@@ -77,4 +83,40 @@ class PollController extends Controller {
             include "views/_403.php";
         }
     }
+
+    
+    private function validateFile($file) {
+        $return = [];
+        if($file['size'] === 0) {
+            $return['image'] = "public/images/cho-corgi-mong-to.jpg";
+            return $return;
+         }
+        // validate file
+        $errors = [];
+        if($file['error'] === 0) {
+            // check size is less than 5mb
+            if($file['size'] > 5000000) {
+                $return['error'] = "File is too large!";
+            }
+            // check file ext is allowed
+            $allowed_ext = ["png", "jpg", "jpeg", "gif"];
+            $file_ext = explode("/", $file['type']);
+            $file_ext = end($file_ext);
+            if(!in_array(strtolower($file_ext), $allowed_ext)) {
+                $return['error'] = "Only images may be uploaded!";
+            }
+            // if there are no errors, rename file and move it
+            if(empty($errors)) {
+                // rename file
+                $new_name = uniqid("itec_") . "." . $file_ext;
+                $dest = "./public/images/" . $new_name;
+                // move to images/
+                if(move_uploaded_file($file['tmp_name'], $dest)) {
+                    $return['image'] = "public/images/" . $new_name;
+                }
+            } 
+        } 
+        return $return;
+    }
+    
 }

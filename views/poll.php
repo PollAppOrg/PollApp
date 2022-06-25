@@ -9,13 +9,15 @@
         <div class="row mt-3">
             <?php foreach($polls as $poll): ?>
                 <div class="col-md-4 mb-3 d-flex">
-                    <div class="card text-left h-100">
-                        <img class="card-img-top" src="https://vuipet.com/wp-content/uploads/2021/04/cho-corgi-mong-to.jpg" alt="">
+                    <div class="card text-left w-100">
+                        <img class="card-img-top" src="<?= $poll['image'] ?>" alt="image"  height="150px">
                         <div class="card-body">
                             <a href=""></a>
                             <h4 class="card-title"><?= $poll['title'] ?></h4>
                             <p class="card-text"><?= $poll['description'] ?></p>
                             <p class="card-text text-muted"><?= $poll['username'] ?> | <?= date("d-M-Y", strtotime($poll['date_created'])) ?> </p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
                             <?php if($_SESSION['user_id'] == $poll['author_id']): ?>
                                 <a class="btn btn-block btn-primary" href="poll/get/<?=$poll['id']?>">Edit</a>
                             <?php else: ?>

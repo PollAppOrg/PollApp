@@ -30,7 +30,8 @@ Router::get("poll/create", function() {
 
 Router::post("poll/create", function() {
     $pollController = new PollController;
-    $pollController->create($_POST);
+    $file = $_FILES['img'];
+    $pollController->create($_POST, $file);
 });
 
 Router::post("poll/update", function() {

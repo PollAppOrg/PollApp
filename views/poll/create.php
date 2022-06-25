@@ -4,7 +4,7 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
-            <form action="<?php ROOT . "poll/create"?>" method="post" class="mb-3">
+            <form action="<?php ROOT . "poll/create"?>" method="post" class="mb-3" enctype="multipart/form-data">
                 <h3>Enter poll details</h3>
                 <div class="form-group">
                   <label for="pTitle">Poll Title</label>
@@ -21,6 +21,13 @@
                 <div class="form-group">
                   <label for="pOption2">Option 2</label>
                   <input type="text" name="pOption2" id="pOption2" class="form-control" placeholder="" aria-describedby="helpId">
+                </div>
+                <div class="form-group">
+                  <label for="img">Image (optional)</label>
+                  <input type="file" name="img">
+                  <div class="invalid-feedback">
+                    Image invalid
+                  </div>
                 </div>
                 <?php CSRF::outputToken(); ?>
                 <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm and Publish</button>

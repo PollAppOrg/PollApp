@@ -4,6 +4,7 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
+            <img class="card-img-top" src="<?= ROOT . $poll['image'] ?>" alt="">
             <h3 class="display-3">
                 <?= $poll['title'] ?>
             </h3>
