@@ -53,6 +53,7 @@ class PollController extends Controller {
     public function vote($vote) {
         $poll = new PollModel($this->conn);
         if($poll->vote($vote)->success()) {
+            $id = $vote['id'];
             include "views/poll/vote_success.php";
         } else {
             $errors = $pollObj->errors;
