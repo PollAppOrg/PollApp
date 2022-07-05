@@ -67,7 +67,7 @@
         <div class="col-md-6">
             <div class="card border-0">
                 <div class="card-body text-center">
-                    <i class="fa-solid fa-bars-progress display-3"></i>
+                    <i class="fa fa-arrow-circle-right display-3" aria-hidden="true"></i>
                     <h3 class="card-title my-5">Log In Now</h3>
                     <p class="card-text"></p>
                     <a href="<?= ROOT . 'user/login'?>" class="btn btn3 btn-block btn-lg">Login</a>
