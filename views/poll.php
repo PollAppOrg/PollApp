@@ -53,7 +53,7 @@
     <?php else: ?>
         <div class="row">
             <div class="col-md-12">
-                <h3 class="display-5 text-primary">
+                <h3 class="display-5 text-pop">
                     There are currently no polls yet!
                 </h3>
             </div>
