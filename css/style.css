@@ -70,6 +70,7 @@ body {
   background-position: center;
   background-size: cover;
   height: 100vh;
+  margin-top: -10px;
 }
 
 .home .jumbotron {

@@ -27,6 +27,24 @@ class PollModel extends Model {
         return $this;
     }
 
+    function fetchPollWithValue($value) {
+        $sql = "SELECT polls.*, username
+                FROM polls
+                JOIN users ON users.id = polls.author_id
+                WHERE title LIKE ? OR username LIKE ?";
+        $value = '%' . $value . '%';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ss", $value, $value);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows === 0) {
+            $this->errors['fetch_err'] = "Couldn't retrieve resource!";
+        } else {
+            $this->polls = $result->fetch_all(MYSQLI_ASSOC);
+        }
+        return $this;
+    }
+
     public function fetchPoll($id) {
         $this->poll_id = $id;
         $sql = "SELECT polls.*, username
