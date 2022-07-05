@@ -149,6 +149,22 @@ canvas {
   z-index: -9999;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pop-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pop-color2);
+}
+
 @media only screen and (max-width: 991px) {
   .navbar-nav {
     display: flex;
