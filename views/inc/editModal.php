@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-dark btn-block mr-3" data-toggle="modal" data-target="#exampleModalLong">
+<button type="button" class="btn btn-dark btn-block mb-3" data-toggle="modal" data-target="#exampleModalLong">
  <i class="fa fa-pencil" aria-hidden="true"></i> Edit
 </button>
 

@@ -1,27 +1,27 @@
 <?php include "inc/head.php"; ?>
 
-<div class="container my-5">
+<div class="container my-5 pt-5">
     <h2 class="display-3">Polls</h2>
     <?php if($_SESSION['logged_in']): ?>
-    <a href="<?=ROOT?>poll/create" class="btn btn-warning btn-block btn-lg"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create New Poll</a>
+    <a href="<?=ROOT?>poll/create" class="btn btn4 btn-block btn-lg"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create New Poll</a>
     <?php endif; ?>
     <?php if(!empty($polls)): ?>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <?php foreach($polls as $poll): ?>
-                <div class="col-md-4 mb-3 d-flex">
-                    <div class="card text-left w-100">
-                        <img class="card-img-top" src="<?= $poll['image'] ?>" alt="image"  height="150px">
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="card text-left w-100 border-pop border-top-0 border-bottom-0">
+                        <img class="card-img-top" src="<?= $poll['image'] ?>" alt="image"  height="250px">
                         <div class="card-body">
                             <a href=""></a>
-                            <h4 class="card-title"><?= $poll['title'] ?></h4>
+                            <h3 class="card-title"><?= $poll['title'] ?></h3>
                             <p class="card-text"><?= $poll['description'] ?></p>
                             <p class="card-text text-muted"><?= $poll['username'] ?> | <?= date("d-M-Y", strtotime($poll['date_created'])) ?> </p>
                         </div>
-                        <div class="card-footer d-flex justify-content-between">
+                        <div class="card-footer p-0">
                             <?php if($_SESSION['user_id'] == $poll['author_id']): ?>
-                                <a class="btn btn-block btn-primary" href="poll/get/<?=$poll['id']?>">Edit</a>
+                                <a class="btn btn-block btn5 btn-lg w-100" href="poll/get/<?=$poll['id']?>">Edit</a>
                             <?php else: ?>
-                                <a class="btn btn-block btn-primary" href="poll/get/<?=$poll['id']?>">Vote now!</a>
+                                <a class="btn btn-block btn5 btn-lg w-100" href="poll/get/<?=$poll['id']?>">Vote now!</a>
                             <?php endif; ?>
                         </div>
                     </div>    
