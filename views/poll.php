@@ -8,6 +8,7 @@
             <label for="search">Search by poll's title and author's name</label>
             <input type="text" id="search" name="value" class="form-control" placeholder="Fill in search and press ENTER" value="<?= !empty($_GET['value']) ? $_GET['value'] : '' ?>">
         </div>
+        <?php CSRF::outputToken(); ?>
         <button type="submit" class="border-0 p-0 w-0 h-0"></button>
     </form>
 
@@ -22,8 +23,8 @@
                 <option value="least_votes">Least votes first</option>
             </select>
         </div>
-    </div>
-     -->
+    </div> -->
+    
     <a href="<?=ROOT?>poll/create" class="btn btn4 btn-block btn-lg mt-0"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create New Poll</a>
     <?php endif; ?>
     <?php if(!empty($polls)): ?>
@@ -43,7 +44,7 @@
                             <?php if($_SESSION['user_id'] == $poll['author_id']): ?>
                                 <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Edit</a>
                             <?php else: ?>
-                                <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Vote now!</a>
+                                <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Vote now! | <?= $_SESSION['role'] == 1 ? 'Edit' : '' ?></a>
                             <?php endif; ?>
                         </div>
                     </div>    

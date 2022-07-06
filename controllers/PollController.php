@@ -22,6 +22,18 @@ class PollController extends Controller {
         }
     }
 
+    public function getTrendingPolls() {
+        $polls = new PollModel($this->conn);
+        if($polls->fetchPolls()->success()) {
+            $polls->sortDescByVotes();
+            $polls = $polls->getPolls();
+            return $polls;
+        } else {
+            $errors = $polls->errors;
+            $polls = [];
+        }
+    }
+
     public function searchAndGetPolls($value) {
         $polls = new PollModel($this->conn);
         if($polls->fetchPollWithValue($value)->success()) {

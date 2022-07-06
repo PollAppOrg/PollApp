@@ -153,6 +153,24 @@ class PollModel extends Model {
         return $this;
     }
 
+    public function sortDescByVotes() {
+        if(empty($this->polls)) {
+            return;
+        }
+        usort($this->polls, [$this, 'compare']);
+    }
+
+    private function compare($a, $b) {
+        $vote_a = $a['vote_1'] + $a['vote_2'];
+        $vote_b = $b['vote_1'] + $b['vote_2'];
+
+        if($vote_a == $vote_b) {
+            return 0;
+        }
+
+        return $vote_a > $vote_b ? -1 : 1;
+    }
+
     public function success() {
         return empty($this->errors);
      }

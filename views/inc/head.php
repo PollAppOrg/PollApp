@@ -17,7 +17,7 @@
 <body>
     
 <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top py-3">
-    <div class="container">    
+    <div class="container-fluid">    
         <a class="navbar-brand font-weight-bold" href="<?php echo ROOT ?>"> <i class="fa fa-bar-chart" aria-hidden="true"></i><h4 class="d-inline"> Poll App</h4></a>
         <button class="navbar-toggler border-0" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon text-white"></span>

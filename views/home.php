@@ -78,6 +78,22 @@
     </div>
 </div>
 
+<div class="container-fluid mb-5 pb-5">
+    <h3 class="display-3 text-center mb-5">Top Trending Polls</h3>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group top-trending">
+                <li class="list-group-item d-flex justify-content-between border-top-0 border-left-0 border-right-0">
+                    <h4 class="index">Index</h4>
+                    <h4 class="title">Title</h4>
+                    <h4 class="vote">Votes</h4>
+                    <h4 class="link">Go to Poll</h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
 <div class="row hero1">
     
@@ -86,9 +102,9 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- <script>
-    <?php include 'js/chartGenerate.js'; ?>
-</script> -->
+<script>
+    <?php include 'js/main.js'; ?>
+</script>
 
 
 <?php include "inc/footer.php" ?>

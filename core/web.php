@@ -54,6 +54,13 @@ Router::get("poll/search", function() {
     }
 });
 
+Router::get("poll/trending", function() {
+    // var_dump("here");
+    $pollController = new PollController;
+    $polls = $pollController->getTrendingPolls();
+    echo json_encode($polls);
+});
+
 Router::get("user/signup", function() {
     include "views/sign_up.php";
 });

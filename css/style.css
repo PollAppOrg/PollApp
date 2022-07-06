@@ -144,6 +144,15 @@ body {
   border-color: var(--pop-color);
 }
 
+.nav-link {
+  color: #cecaca !important;
+}
+
+.nav-link:hover {
+  color: var(--pop-color) !important;
+  transform: translate(1px, -1px);
+}
+
 canvas {
   top: 0;
   left: 0;
@@ -164,6 +173,30 @@ canvas {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--pop-color2);
+}
+
+.top-trending .index {
+  width: 10%;
+}
+
+.top-trending .title {
+  width: 50%;
+}
+
+.top-trending .vote {
+  width: 20%;
+}
+
+.top-trending a, .top-trending .link {
+  width: 30%;
+}
+
+.font-size-2 {
+  font-size: 2em;
+}
+
+.font-size-15 {
+  font-size: 1.5em;
 }
 
 @media only screen and (max-width: 991px) {

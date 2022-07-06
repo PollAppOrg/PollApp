@@ -1,5 +1,5 @@
     <footer class="primary-color text-white">
-        <div class="container py-4">
+        <div class="container-fluid py-4">
             <h4 class="font-weight-bold">Poll App - Copyright @QTP</h4> 
         </div>
     </footer>
