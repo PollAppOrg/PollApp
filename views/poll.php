@@ -3,6 +3,8 @@
 <div class="container my-5 pt-5">
     <h2 class="display-3">Polls</h2>
 
+    <?php if($_SESSION['logged_in']): ?>
+    
     <form method="get" action="<?=ROOT . "poll/search"?>">
         <div class="form-group mb-1">
             <label for="search">Search by poll's title and author's name</label>
@@ -11,21 +13,19 @@
         <?php CSRF::outputToken(); ?>
         <button type="submit" class="border-0 p-0 w-0 h-0"></button>
     </form>
-
-    <?php if($_SESSION['logged_in']): ?>
     
-    <!-- <div>
-        <div class="form-group mb-4">
-            <label for="sort_options">Sort by options:</label>
-            <select name="sort_options" id="sort_options" class="form-control">
-                <option value="">Choose one below...</option>
-                <option value="most_votes">Most votes first</option>
-                <option value="least_votes">Least votes first</option>
-            </select>
+    <button class="view-trending mb-1 btn btn6 btn-block btn-lg">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+        View Top Trending Polls
+    </button>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group top-trending-2">
+            </ul>
         </div>
-    </div> -->
-    
-    <a href="<?=ROOT?>poll/create" class="btn btn4 btn-block btn-lg mt-0"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create New Poll</a>
+    </div>
+
+    <a href="<?=ROOT?>poll/create" class="btn btn4 btn-block btn-lg mt-4"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create New Poll</a>
     <?php endif; ?>
     <?php if(!empty($polls)): ?>
         <div class="row mt-4">
@@ -44,7 +44,7 @@
                             <?php if($_SESSION['user_id'] == $poll['author_id']): ?>
                                 <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Edit</a>
                             <?php else: ?>
-                                <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Vote now! | <?= $_SESSION['role'] == 1 ? 'Edit' : '' ?></a>
+                                <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Vote now!<?= $_SESSION['role'] == 1 ? ' | Edit' : '' ?></a>
                             <?php endif; ?>
                         </div>
                     </div>    

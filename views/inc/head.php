@@ -1,3 +1,13 @@
+<?php
+function active($currect_page){
+  $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
+  $url = end($url_array);  
+  if($currect_page == $url){
+      echo 'active';
+  } 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +36,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-flex align-items-center px-2">
 
-                    <a class="nav-link" href="<?= ROOT ?>">
+                    <a class="nav-link <?php active('') ?>" href="<?= ROOT ?>">
                     
                     <i class="fa-solid fa-house d-flex justify-content-center"></i>
                     Home<span class="sr-only">(current)</span>
@@ -35,16 +45,16 @@
                 </li>
                 <li class="nav-item d-flex align-items-center px-2">
                 
-                    <a class="nav-link" href="<?= ROOT . "poll" ?>">
+                    <a class="nav-link <?php active('poll') ?>" href="<?= ROOT . "poll" ?>">
                     <i class="fa-solid fa-check-to-slot d-flex justify-content-center"></i>
                     Polls<span class="sr-only">(current)</span></a>
                 </li>
             <?php if($_SESSION['logged_in'] == true): ?>
                 <li class="nav-item d-flex align-items-center px-2">
-                    <a class="nav-link" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
+                    <a class="nav-link <?php active('create') ?>" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item d-flex align-items-center px-2">
-                    <a class="nav-link" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
+                    <a class="nav-link <?php active('user') ?>" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item d-flex align-items-center px-2">
                     <a class="nav-link" href="<?=ROOT?>user/logout"> <i class="fa-solid fa-right-from-bracket  d-flex justify-content-center"></i>Logout<span class="sr-only">(current)</span></a>
@@ -52,7 +62,7 @@
             <?php else: ?>
                 <li class="nav-item d-flex align-items-center px-2">
 
-                    <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
+                    <a class="nav-link <?php active('login')?>" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                 </li>
             <?php endif; ?>
             </ul>

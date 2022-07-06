@@ -65,7 +65,7 @@
                 </div>
             <?php endif; ?>
 
-            <a href="<?= ROOT . "poll"?>" class="btn btn5 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            <a href="<?= ROOT . "poll"?>" class="btn btn5 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Polls</a>
         </div>
     </div>
 </div>

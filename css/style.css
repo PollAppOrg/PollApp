@@ -48,21 +48,12 @@ p, button, a, input, label, div {
   font-family: var(--normal-font);
 }
 
-/* 
-.bg-primary {
-  background-color: rgb(168, 230, 255) !important;
-} */
-
 body {
   color: black !important;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
   margin-top: 80px;
-}
-
-.navbar {
-  /* box-shadow: 0 4px 15px -5px gray; */
 }
 
 .home {
@@ -153,6 +144,10 @@ body {
   transform: translate(1px, -1px);
 }
 
+.nav-link.active {
+  color: var(--pop-color2) !important;
+}
+
 canvas {
   top: 0;
   left: 0;
@@ -175,19 +170,19 @@ canvas {
   background: var(--pop-color2);
 }
 
-.top-trending .index {
+.top-trending .index, .top-trending-2 .index {
   width: 10%;
 }
 
-.top-trending .title {
+.top-trending .title, .top-trending-2 .title {
   width: 50%;
 }
 
-.top-trending .vote {
+.top-trending .vote, .top-trending-2 .vote {
   width: 20%;
 }
 
-.top-trending a, .top-trending .link {
+.top-trending a, .top-trending .link, .top-trending-2 a, .top-trending-2 .link {
   width: 30%;
 }
 
