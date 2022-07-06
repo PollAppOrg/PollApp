@@ -14,11 +14,11 @@ class UserController extends Controller {
             } else {
                 //output errors
                 $errors = $userObj->errors;
-                include "views/login.php"; 
+                include "views/sign_up.php"; 
             }    
         } else {
             $errors = $userObj->errors;
-            include "views/login.php"; 
+            include "views/sign_up.php"; 
         }
     } 
 

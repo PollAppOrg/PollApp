@@ -1,6 +1,6 @@
-    <footer class="bg-primary text-black fixed-bottom ">
-        <div class="container p-3 font-weight-lighter">
-            <div>Poll App - Copyright @QTP</div> 
+    <footer class="primary-color text-white">
+        <div class="container-fluid py-4">
+            <h4 class="font-weight-bold">Poll App - Copyright @QTP</h4> 
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

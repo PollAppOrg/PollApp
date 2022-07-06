@@ -45,6 +45,22 @@ Router::post("poll/delete", function() {
     $pollController->delete($_POST);
 });
 
+Router::get("poll/search", function() {
+    $pollController = new PollController;
+    if(!isset($_GET['value']) || empty($_GET['value'])) {
+        Router::redirect('poll');
+    } else {
+        $pollController->searchAndGetPolls($_GET['value']);
+    }
+});
+
+Router::get("poll/trending", function() {
+    // var_dump("here");
+    $pollController = new PollController;
+    $polls = $pollController->getTrendingPolls();
+    echo json_encode($polls);
+});
+
 Router::get("user/signup", function() {
     include "views/sign_up.php";
 });

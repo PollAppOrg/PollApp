@@ -8,9 +8,13 @@ if(!isset($_SESSION['logged_in']))
 if(!isset($_SESSION['user_id']))
     $_SESSION['user_id'] = -1;
 
+if(!isset($_SESSION['role']))
+    $_SESSION['role'] = 0;
+
+
 include_once "core/DB.php";
 DB::getInstance();
-DB::connect("localhost", "root", "root", "2022PollAppDB"); //pw = "" for XAMP
+DB::connect("localhost", "root", "", "2022PollAppDB"); //pw = "" for XAMP
 $conn = DB::getConn();
 // auto load classes
 spl_autoload_register(function($className) {

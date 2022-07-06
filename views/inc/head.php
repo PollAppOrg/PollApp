@@ -1,3 +1,13 @@
+<?php
+function active($currect_page){
+  $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
+  $url = end($url_array);  
+  if($currect_page == $url){
+      echo 'active';
+  } 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,46 +24,45 @@
     </style>
     <title>Poll App</title>
 </head>
-<body class="mt-5 pt-2">
+<body>
     
-<nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
-    <div class="container">    
-        <a class="navbar-brand" href="<?php echo ROOT ?>"> <i class="fa fa-bar-chart" aria-hidden="true"></i> Poll App</a>
-        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top py-3">
+    <div class="container-fluid">    
+        <a class="navbar-brand font-weight-bold" href="<?php echo ROOT ?>"> <i class="fa fa-bar-chart" aria-hidden="true"></i><h4 class="d-inline"> Poll App</h4></a>
+        <button class="navbar-toggler border-0" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white"></span>
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item d-flex align-items-center">
+                <li class="nav-item d-flex align-items-center px-2">
 
-                    <a class="nav-link" href="<?= ROOT ?>">
+                    <a class="nav-link <?php active('') ?>" href="<?= ROOT ?>">
                     
                     <i class="fa-solid fa-house d-flex justify-content-center"></i>
                     Home<span class="sr-only">(current)</span>
                 
                     </a>
                 </li>
-                <li class="nav-item d-flex align-items-center ">
+                <li class="nav-item d-flex align-items-center px-2">
                 
-                    <a class="nav-link" href="<?= ROOT . "poll" ?>">
+                    <a class="nav-link <?php active('poll') ?>" href="<?= ROOT . "poll" ?>">
                     <i class="fa-solid fa-check-to-slot d-flex justify-content-center"></i>
                     Polls<span class="sr-only">(current)</span></a>
                 </li>
             <?php if($_SESSION['logged_in'] == true): ?>
-                <li class="nav-item d-flex align-items-center ">
-                    <a class="nav-link" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <a class="nav-link <?php active('create') ?>" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
                 </li>
-                
-                <li class="nav-item d-flex align-items-center ">
-                    <a class="nav-link" href="<?=ROOT. "poll/create"?>"><i class="fa-solid fa-plus d-flex justify-content-center"></i>Create Poll<span class="sr-only">(current)</span></a>
+                <li class="nav-item d-flex align-items-center px-2">
+                    <a class="nav-link <?php active('user') ?>" href="<?=ROOT?>user"><i class="fa fa-user-circle d-flex justify-content-center" aria-hidden="true"></i> <?= $_SESSION['username'];?><span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item d-flex align-items-center ">
+                <li class="nav-item d-flex align-items-center px-2">
                     <a class="nav-link" href="<?=ROOT?>user/logout"> <i class="fa-solid fa-right-from-bracket  d-flex justify-content-center"></i>Logout<span class="sr-only">(current)</span></a>
                 </li>
             <?php else: ?>
-                <li class="nav-item d-flex align-items-center ">
+                <li class="nav-item d-flex align-items-center px-2">
 
-                    <a class="nav-link" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
+                    <a class="nav-link <?php active('login')?>" href="<?=ROOT?>user/login"><i class="fa fa-user d-flex justify-content-center" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a>
                 </li>
             <?php endif; ?>
             </ul>

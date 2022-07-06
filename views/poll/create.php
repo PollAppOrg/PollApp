@@ -1,11 +1,12 @@
 <?php include __DIR__ . "/../inc/head.php" ?>
 <?php if($_SESSION['logged_in']): ?>
 <?php include "views/inc/error.php" ?>
-<div class="container my-5">
+<div class="container my-5 pt-5">
+  <?php include "views/inc/error.php" ?>
     <div class="row">
         <div class="col-md-12">
             <form action="<?php ROOT . "poll/create"?>" method="post" class="mb-3" enctype="multipart/form-data">
-                <h3>Enter poll details</h3>
+                <h3 class="display-3">Enter poll details</h3>
                 <div class="form-group">
                   <label for="pTitle">Poll Title</label>
                   <input type="text" name="pTitle" id="pTitle" class="form-control" placeholder="" aria-describedby="helpId">
@@ -30,9 +31,9 @@
                   </div>
                 </div>
                 <?php CSRF::outputToken(); ?>
-                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm and Publish</button>
+                <button type="submit" class="btn btn6 btn-block"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm and Publish</button>
             </form>
-            <a href="<?= ROOT . "poll"?>" class="btn btn-warning btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            <a href="<?= ROOT . "poll"?>" class="btn btn4 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Polls</a>
         </div>
     </div>
 </div>
