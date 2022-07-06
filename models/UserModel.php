@@ -78,19 +78,18 @@ class UserModel extends Model {
       return $this;
    }
 
-   public function validateLoginUser($user) {
+   public function validateLoginUser($user) { 
       $this->user_name = htmlspecialchars($user['username']);
       $this->user_password = htmlspecialchars($user['password']);
 
       if(!$this->checkUserExist($this->user_name)) {
          $this->errors['username_err'] = "User not found";
+      } else {
+         $this->user_hash = $this->user["password_hash"];
+         if(!password_verify($this->user_password, $this->user_hash)) {
+            $this->errors['password_err'] = "Password is wrong";
+         }    
       }
-
-      $this->user_hash = $this->user["password_hash"];
-      if(!password_verify($this->user_password, $this->user_hash)) {
-         $this->errors['password_err'] = "Password is wrong";
-      }    
-
       return $this;
    }
 

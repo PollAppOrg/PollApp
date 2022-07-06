@@ -1,8 +1,8 @@
 <?php include "inc/head.php" ?>
 <div class="container my-5 pt-5">
+    <?php include "views/inc/error.php" ?>
     <div class="row">
     <?php if($_SESSION["logged_in"] === false): ?>
-    <?php include "views/inc/error.php" ?>
         <div class="col-md-6 border-dark offset-md-3">
             <h3 class="text-center font-weight-light display-3">Login to Account</h3>
             <hr>

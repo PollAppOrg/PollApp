@@ -1,5 +1,5 @@
 <?php if(!empty($errors)): ?>
-    <div class="alert alert-danger">
+    <div class="alert secondary-color text-pop">
         <h3>Errors</h3>
         <?php foreach($errors as $errors): ?>
             <div>

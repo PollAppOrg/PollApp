@@ -2,6 +2,7 @@
 <?php if($_SESSION['logged_in']): ?>
 <?php include "views/inc/error.php" ?>
 <div class="container my-5 pt-5">
+  <?php include "views/inc/error.php" ?>
     <div class="row">
         <div class="col-md-12">
             <form action="<?php ROOT . "poll/create"?>" method="post" class="mb-3" enctype="multipart/form-data">
@@ -32,7 +33,7 @@
                 <?php CSRF::outputToken(); ?>
                 <button type="submit" class="btn btn6 btn-block"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm and Publish</button>
             </form>
-            <a href="<?= ROOT . "poll"?>" class="btn btn4 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            <a href="<?= ROOT . "poll"?>" class="btn btn4 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Polls</a>
         </div>
     </div>
 </div>
