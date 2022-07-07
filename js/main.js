@@ -15,7 +15,7 @@ window.onload = async () => {
 
     if(list2 != null) {
         list2.innerHTML = `<li class="list-group-item d-flex justify-content-between border-top-0 border-left-0 border-right-0">
-                                <h4 class="index">Index</h4>
+                                <h4 class="index">#</h4>
                                 <h4 class="title">Title</h4>
                                 <h4 class="vote">Votes</h4>
                                 <h4 class="link">Go to Poll</h4>
