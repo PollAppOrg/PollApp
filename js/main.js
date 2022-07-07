@@ -12,6 +12,7 @@ window.onload = async () => {
     if(list != null) {
         list.innerHTML += tmp;
     }
+
     if(list2 != null) {
         list2.innerHTML = `<li class="list-group-item d-flex justify-content-between border-top-0 border-left-0 border-right-0">
                                 <h4 class="index">Index</h4>
@@ -61,7 +62,7 @@ function loadPollsToUI() {
 }
 
 async function fetchTrendingPolls() {
-    let polls = await fetch("poll/trending")
+    let polls = await fetch(root + "poll/trending")
                 .then(res => res.json())
                 .then(data => data);
     return polls;

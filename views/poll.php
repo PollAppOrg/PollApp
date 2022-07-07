@@ -10,7 +10,6 @@
             <label for="search">Search by poll's title and author's name</label>
             <input type="text" id="search" name="value" class="form-control" placeholder="Fill in search and press ENTER" value="<?= !empty($_GET['value']) ? $_GET['value'] : '' ?>">
         </div>
-        <?php CSRF::outputToken(); ?>
         <button type="submit" class="border-0 p-0 w-0 h-0"></button>
     </form>
     
@@ -63,6 +62,7 @@
 </div>
 
 <script>
+    let root = "<?= ROOT ?>"
     <?php include "js/main.js";?>
 </script>
 
