@@ -54,6 +54,12 @@
             </div>
             <?php endif; ?>
 
+            <?php if($isVoted): ?>
+                <div class="mb-3">
+                    <h4 class="font-weight-light">You already placed your vote for this poll. Please visit other polls for more voting action!!!</h4>
+                </div>
+            <?php endif;?>
+
             <?php if($_SESSION['role'] == 1 || $poll['author_id'] == $_SESSION['user_id']): ?>
                 <div class="d-flex mb-3 flex-column">
                     <?php include __DIR__ . "/../inc/editModal.php"?>
