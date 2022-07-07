@@ -203,3 +203,22 @@ canvas {
     font-size: 25px;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .top-trending .index, .top-trending-2 .index {
+    font-size: 20px;
+  }
+  
+  .top-trending .title, .top-trending-2 .title {
+    font-size: 20px;
+    width: 40%;
+  }
+  
+  .top-trending .vote, .top-trending-2 .vote {
+    font-size: 20px;
+  }
+  
+  .top-trending a, .top-trending .link, .top-trending-2 a, .top-trending-2 .link {
+    font-size: 20px;
+  }
+}
