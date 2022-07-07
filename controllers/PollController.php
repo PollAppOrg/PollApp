@@ -88,7 +88,7 @@ class PollController extends Controller {
     public function delete($poll) {
         $pollObj = new PollModel($this->conn);
         $pollObj->fetchPoll($poll['id']);
-        if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['user_role'] == 1) {
+        if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['role'] == 1) {
             if($pollObj->delete($poll['id'])->success()) {
                 Router::redirect("poll");
             }
@@ -100,7 +100,7 @@ class PollController extends Controller {
     public function update($poll) {
         $pollObj = new PollModel($this->conn);
         $pollObj->fetchPoll($poll['id']);
-        if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['user_role'] == 1) {
+        if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['role'] == 1) {
             if($pollObj->update($poll)->success()) {
                 Router::redirect("poll/get/" . $poll['id']);
             }
