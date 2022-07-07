@@ -133,8 +133,10 @@ class PollModel extends Model {
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ssssi", $this->poll_title, $this->poll_desc, $this->poll_option1, $this->poll_option2, $this->poll_id);
         $stmt->execute();
-        if($stmt->affected_rows !== 1) {
-            $this->errors['vote_err'] = "Vote failed!";
+        var_dump($stmt);
+
+        if($stmt->errno != 0) {
+            $this->errors['update_err'] = "Update failed!";
         } else {
             $this->poll_id = $stmt->insert_id;
         }
