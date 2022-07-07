@@ -10,9 +10,11 @@ class PollController extends Controller {
         parent::__construct();
     }
 
-    public function getPolls() {
+    public function getPolls($vote) {
+        $votes = $vote;
         $polls = new PollModel($this->conn);
         if($polls->fetchPolls()->success()) {
+            // $votes->fetchVotes()
             $polls = $polls->getPolls();
             include "views/poll.php";
         } else {
@@ -46,7 +48,7 @@ class PollController extends Controller {
         }
     }
 
-    public function getPoll($id) {
+    public function getPoll($id, $isVoted) {
         $poll = new PollModel($this->conn);
         if($poll->fetchPoll($id)->success()) {
             $poll = $poll->getPoll();
@@ -79,9 +81,11 @@ class PollController extends Controller {
         if($poll->vote($vote)->success()) {
             $id = $vote['id'];
             include "views/poll/vote_success.php";
+            return true;
         } else {
             $errors = $pollObj->errors;
             include "views/poll/single_poll.php";
+            return false;
         }
     }
 
@@ -91,9 +95,11 @@ class PollController extends Controller {
         if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['role'] == 1) {
             if($pollObj->delete($poll['id'])->success()) {
                 Router::redirect("poll");
+                return true;
             }
         } else {
             include "views/_403.php";
+            return false;
         }
     }
 

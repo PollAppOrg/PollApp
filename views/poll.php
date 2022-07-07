@@ -42,6 +42,8 @@
                         <div class="card-footer p-0">
                             <?php if($_SESSION['user_id'] == $poll['author_id']): ?>
                                 <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Edit</a>
+                            <?php elseif($votes->isVoted($_SESSION['user_id'],$poll['id'])): ?>
+                                <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Voted !<?= $_SESSION['role'] == 1 ? ' | Edit' : '' ?></a>
                             <?php else: ?>
                                 <a class="btn btn-block btn5 btn-lg w-100" href="<?=ROOT?>poll/get/<?=$poll['id']?>">Vote now!<?= $_SESSION['role'] == 1 ? ' | Edit' : '' ?></a>
                             <?php endif; ?>

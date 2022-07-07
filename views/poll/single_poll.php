@@ -32,7 +32,7 @@
                 <p>There is no vote for this poll yet!</p>
             <?php endif; ?>
 
-            <?php if($poll['author_id'] != $_SESSION['user_id']): ?>
+            <?php if($poll['author_id'] != $_SESSION['user_id'] && !$isVoted): ?>
             <div class="d-flex align-items-center mb-3">
                 <div class="div w-100 mr-3 text-center">
                     <form action="<?=ROOT?>poll/vote" method="post">

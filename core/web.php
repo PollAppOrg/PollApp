@@ -12,13 +12,19 @@ Router::get("user", function() {
 
 Router::get("poll", function() {
     $pollController = new PollController;
-    $poll = $pollController->getPolls();
+    $voteController = new VoteController;
+
+    $votes = $voteController->fetchVotes($_SESSION['user_id'] );
+    var_dump($votes);
+    // var_dump($voteController->isVoted($_SESSION['user_id'],1));
+    $poll = $pollController->getPolls($voteController);
 });
 
 Router::get("poll/get/{id}", function($id) {
     if($_SESSION['logged_in']) {
         $pollController = new PollController;
-        $pollController->getPoll($id);
+        $voteController = new VoteController;
+        $pollController->getPoll($id, $voteController->isVoted($_SESSION['user_id'],$id));
     } else {
         include "views/inc/login_redirect.php";
     }
@@ -42,7 +48,9 @@ Router::post("poll/update", function() {
 Router::post("poll/delete", function() {
     // var_dump("here");
     $pollController = new PollController;
-    $pollController->delete($_POST);
+    $voteController = new VoteController;
+    if($pollController->delete($_POST))
+        $voteController->deleteVotes($_POST['id']);
 });
 
 Router::get("poll/search", function() {
@@ -86,7 +94,9 @@ Router::post("user/login", function() {
 
 Router::post("poll/vote", function() {
     $pollController = new PollController;
-    $pollController->vote($_POST);
+    $voteController = new VoteController;
+    if($pollController->vote($_POST))
+        $voteController->createVote($_SESSION['user_id'], $_POST['id']);
 });
 
 if(Router::$found === false) {

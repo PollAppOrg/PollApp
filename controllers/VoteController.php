@@ -6,14 +6,20 @@ class VoteController extends Controller {
         parent::__construct();
     }
 
-    public function isVoted($_username, $_pool_id)  {
+    public function fetchVotes($_user_id)  {
         $voteObj = new VoteModel($this->conn);
-        return $voteObj->isVoted($_username, $_pool_id);
+        $voteObj->fetchVotes($_user_id);
+        return $voteObj->voteds;
     } 
 
-    public function createVote($_username, $_pool_id)  {
+    public function isVoted($_user_id, $_pool_id)  {
         $voteObj = new VoteModel($this->conn);
-        return $voteObj->createVote($_username, $_pool_id);
+        return $voteObj->isVoted($_user_id, $_pool_id);
+    } 
+
+    public function createVote($_user_id, $_pool_id)  {
+        $voteObj = new VoteModel($this->conn);
+        return $voteObj->createVote($_user_id, $_pool_id);
     } 
 
     public function deleteVotes($_pool_id)  {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 07, 2022 at 03:31 AM
+-- Generation Time: Jul 07, 2022 at 04:05 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -49,9 +49,8 @@ CREATE TABLE IF NOT EXISTS `polls` (
 
 INSERT INTO `polls` (`id`, `title`, `description`, `image`, `author_id`, `option_1`, `option_2`, `date_created`, `date_modified`, `vote_1`, `vote_2`) VALUES
 (4, 'What should I wear today?', 'soss2', 'public/images/itec_62b751c2a1f24.jpeg', 1, 'T-Shirt', 'Jackettu', '2022-06-24 18:51:20', NULL, 2, 1),
-(6, 'Love or Career?', 'sosowewq', 'public\\images\\cho-corgi-mong-to.jpg', 10, 'Love', 'Career', '2022-06-24 19:06:06', NULL, 14, 7),
-(7, 'Pineapple on pizza?', 'yes or no', 'public\\images\\cho-corgi-mong-to.jpg', 10, 'Yes', 'No', '2022-06-24 19:06:34', NULL, 3, 1),
-(8, 'Cat or Dog?', '...._....', 'public\\images\\cho-corgi-mong-to.jpg', 10, 'Cat', 'Dog', '2022-06-24 19:06:56', NULL, 1, 1),
+(7, 'Pineapple on pizza?', 'yes or no', 'public\\images\\cho-corgi-mong-to.jpg', 10, 'Yes', 'No', '2022-06-24 19:06:34', NULL, 4, 1),
+(8, 'Cat or Dog?', '...._....', 'public\\images\\cho-corgi-mong-to.jpg', 10, 'Cat', 'Dog', '2022-06-24 19:06:56', NULL, 2, 1),
 (9, 'Coke or Pepsi?', ':&gt;', 'public\\images\\cho-corgi-mong-to.jpg', 1, 'Coke', 'Pepsi', '2022-06-24 20:08:46', NULL, 1, 0),
 (10, 'Sleep or Study?', 'zzzzzzz', 'public\\images\\cho-corgi-mong-to.jpg', 1, 'Sleep', 'Study', '2022-06-24 20:09:08', NULL, 0, 1),
 (11, 'Run or Walk', 'I don\'t know', 'public/images/cho-corgi-mong-to.jpg', 1, 'Run', 'Walk', '2022-07-06 10:04:46', NULL, 0, 0);
@@ -91,7 +90,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `role`, `date_c
 
 DROP TABLE IF EXISTS `votes`;
 CREATE TABLE IF NOT EXISTS `votes` (
-  `username` varchar(55) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `pool_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -99,8 +98,9 @@ CREATE TABLE IF NOT EXISTS `votes` (
 -- Dumping data for table `votes`
 --
 
-INSERT INTO `votes` (`username`, `pool_id`) VALUES
-('admin', 6);
+INSERT INTO `votes` (`user_id`, `pool_id`) VALUES
+(1, 7),
+(1, 8);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
