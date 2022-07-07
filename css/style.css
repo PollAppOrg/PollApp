@@ -66,6 +66,7 @@ body {
 
 .home .jumbotron {
   height: 100%;
+  opacity: 0.9;
 }
 
 .hero1 {
@@ -221,4 +222,21 @@ canvas {
   .top-trending a, .top-trending .link, .top-trending-2 a, .top-trending-2 .link {
     font-size: 20px;
   }
+}
+
+
+/* STYLE FOR THE youtube */
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+  position: absolute;
+  /* position: fixed; */
+  /* left: 0; */
+  bottom: 0;
+  /* min-width: 100%; */
+  /* min-height: 100%; */
+  /* object-fit: cover; */
+  width: 100%;
+  height: calc(100vh + 100px);
+  object-fit: cover;
 }

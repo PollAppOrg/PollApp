@@ -15,7 +15,7 @@ Router::get("poll", function() {
     $voteController = new VoteController;
 
     $votes = $voteController->fetchVotes($_SESSION['user_id'] );
-    var_dump($votes);
+    // var_dump($votes);
     // var_dump($voteController->isVoted($_SESSION['user_id'],1));
     $poll = $pollController->getPolls($voteController);
 });

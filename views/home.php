@@ -1,5 +1,11 @@
 <?php include "inc/head.php" ?>
 
+<!-- <div id = "videoOuter"> -->
+<video autoplay muted loop id="myVideo">
+    <source src="<?= ROOT . "public/images/UKParliament.mp4" ?>" type="video/mp4">
+</video>
+<!-- </div> -->
+
 <div class="primary-color container-fluid">
     <div class="row home d-flex align-items-center">
         <div class="col-12">

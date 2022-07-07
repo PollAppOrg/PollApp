@@ -13,7 +13,7 @@ class VoteModel extends Model {
         $stmt->bind_param("s", $_user_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        var_dump($_user_id);
+        // var_dump($_user_id);
         if($result->num_rows === 0) {
             $this->errors['fetch_err'] = "Couldn't retrieve resource!";
         } else {
