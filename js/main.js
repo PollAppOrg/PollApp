@@ -54,7 +54,7 @@ function loadPollsToUI() {
                     <p class="index mb-0 ${extra1}">#${i + 1}</p>
                     <h4 class="title mb-0 ${extra1}">${poll['title'].substring(0,50)}</h4>
                     <p class="vote mb-0 ${extra1}">${poll['vote_1'] + poll['vote_2']}</p>
-                    <a href="<?=ROOT?>/poll/get/${poll['id']}" class="btn btn6">Go to poll</a>
+                    <a href="<?=ROOT?>poll/get/${poll['id']}" class="btn btn6">Go to poll</a>
                 </li>`;
     })
     return tmp;
