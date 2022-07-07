@@ -3,7 +3,7 @@
     <?php if($_SESSION["logged_in"] === false): ?>
     <?php include "views/inc/error.php" ?>
     <div class="row">
-    <div class="col-md-6 pr-5 offset-md-3">
+    <div class="col-md-6 offset-md-3">
         <h3 class="font-weight-light text-center display-3">Create Account</h3>
         <hr>
         <form action="<?=ROOT?>user/create" method="post" enctype="multipart/form-data">
@@ -45,7 +45,7 @@
             <?php CSRF::outputToken(); ?>
             <button class="btn btn5 btn-block" type="submit" name="create" value="true"><i class="fa-solid fa-circle-plus mr-2"></i>Create Account</button>
         </form>
-        </div>
+    </div>
     </div>
     <?php else: ?>
     You are already logged in!
