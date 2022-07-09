@@ -37,7 +37,7 @@ function active($currect_page){
                 <li class="nav-item d-flex align-items-center px-2">
 
                     <a class="nav-link <?php active('') ?>" href="<?= ROOT ?>">
-                    
+                     
                     <i class="fa-solid fa-house d-flex justify-content-center"></i>
                     Home<span class="sr-only">(current)</span>
                 
@@ -45,7 +45,7 @@ function active($currect_page){
                 </li>
                 <li class="nav-item d-flex align-items-center px-2">
                 
-                    <a class="nav-link <?php active('poll') ?>" href="<?= ROOT . "poll" ?>">
+                    <a class="nav-link <?php active('poll') ?>" href="<?= ROOT . "poll?page=0" ?>">
                     <i class="fa-solid fa-check-to-slot d-flex justify-content-center"></i>
                     Polls<span class="sr-only">(current)</span></a>
                 </li>

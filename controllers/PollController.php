@@ -16,6 +16,26 @@ class PollController extends Controller {
         if($polls->fetchPolls()->success()) {
             // $votes->fetchVotes()
             $polls = $polls->getPolls();
+            $polllimit = 6;
+            $numofpages = ceil(count($polls)/$polllimit);
+            if(isset($_GET["page"])){
+                $page = ($_GET["page"]);
+                $startindex =  $page*6;
+                $polls_temp = [];
+                if($page == $numofpages - 1){
+                    for ($i= $startindex; $i < count($polls) ; $i++) { 
+                        array_push($polls_temp, $polls[$i]);
+                    }
+                }
+                else{
+                    for ($i= $startindex; $i < $startindex + 6 ; $i++) { 
+                        array_push($polls_temp, $polls[$i]);
+                    }
+                }
+               
+                $polls = $polls_temp;
+            }
+            
             include "views/poll.php";
         } else {
             $errors = $polls->errors;

@@ -51,7 +51,22 @@
                     </div>    
                 </div>
             <?php endforeach; ?>
+            <nav aria-label="Page navigation example">
         </div>
+        <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <?php  
+    
+        for ($i=0; $i < $numofpages ; $i++) { 
+            $page = $i+1;
+            $home = ROOT."poll";
+            echo "<li class='page-item'><a class='page-link' href='$home?page=$i'>$page</a></li>";
+        }
+        ?>
+        
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+</nav>
     <?php else: ?>
         <div class="row">
             <div class="col-md-12">
