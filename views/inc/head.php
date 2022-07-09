@@ -1,7 +1,14 @@
 <?php
 function active($currect_page){
   $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
-  $url = end($url_array);  
+  if(strpos(end($url_array), "?") != false) {
+    $url = explode('?', end($url_array));
+    array_pop($url);
+    $url = end($url);
+
+  } else {
+    $url = end($url_array);
+  }
   if($currect_page == $url){
       echo 'active';
   } 
