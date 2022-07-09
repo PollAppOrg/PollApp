@@ -32,8 +32,8 @@ $curPage = 0;
     <?php endif; ?>
     
     <?php if(!empty($polls)): ?>
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page= <?= $curPage > 0 ? $curPage-1 : $curPage ?>">Previous</a></li>
+        <ul class="pagination mt-3">
+            <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page=<?= $curPage > 0 ? $curPage-1 : $curPage ?>">Previous</a></li>
             <?php  
         
             for ($i=0; $i < $numofpages ; $i++) { 
@@ -73,7 +73,7 @@ $curPage = 0;
             <nav aria-label="Page navigation example">
         </div>
         <ul class="pagination">
-            <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page= <?= $curPage > 0 ? $curPage-1 : $curPage ?>">Previous</a></li>
+            <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page=<?= $curPage > 0 ? $curPage-1 : $curPage ?>">Previous</a></li>
             <?php  
         
             for ($i=0; $i < $numofpages ; $i++) { 
