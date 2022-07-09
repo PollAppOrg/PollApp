@@ -7,7 +7,7 @@
                 Your vote is recorded!
             </h1>
             <a href="<?=ROOT?>poll/get/<?=$id?>" class="btn btn5 btn-lg btn-block mb-3">Go back to curent poll</a>
-            <a href="<?=ROOT?>poll" class="btn btn6 btn-lg btn-block">Vote more...</a>
+            <a href="<?= ROOT . "poll?page=0"?>" class="btn btn6 btn-lg btn-block">Vote more...</a>
         </div>
     </div>
 </div>

@@ -33,7 +33,7 @@
                 <?php CSRF::outputToken(); ?>
                 <button type="submit" class="btn btn6 btn-block"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm and Publish</button>
             </form>
-            <a href="<?= ROOT . "poll"?>" class="btn btn4 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Polls</a>
+            <a href="<?= ROOT . "poll?page=0"?>" class="btn btn4 btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Polls</a>
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@
             <p class="lead">
                 <?php if($_SESSION['logged_in']): ?>
                     <a class="btn btn1 btn-lg mr-3 mt-3" href="<?=ROOT?>poll/create" role="button">Create your new poll</a>
-                    <a class="btn btn2 btn-lg mt-3" href="<?=ROOT?>poll" role="button">Vote now!</a>
+                    <a class="btn btn2 btn-lg mt-3" href="<?= ROOT . "poll?page=0"?>" role="button">Vote now!</a>
                 <?php else: ?>
                     <a class="btn btn1 btn-lg" href="<?=ROOT?>user/login" role="button">Login to create your first poll</a> 
                     <?php endif; ?>
@@ -35,7 +35,7 @@
                     <i class="fa-solid fa-bars-progress display-3"></i>
                     <h3 class="card-title my-5">View Our Polls</h3>
                     <p class="card-text"></p>
-                    <a href="<?= ROOT . 'poll'?>" class="btn btn3 btn-block btn-lg">Leggo</a>
+                    <a href="<?= ROOT . "poll?page=0"?>" class="btn btn3 btn-block btn-lg">Leggo</a>
                 </div>
             </div>
         </div>    
@@ -66,7 +66,7 @@
                     <i class="fa-solid fa-bars-progress display-3"></i>
                     <h3 class="card-title my-5">View Our Polls</h3>
                     <p class="card-text"></p>
-                    <a href="<?= ROOT . 'poll'?>" class="btn btn3 btn-block btn-lg">Leggo</a>
+                    <a href="<?= ROOT . "poll?page=0"?>" class="btn btn3 btn-block btn-lg">Leggo</a>
                 </div>
             </div>
         </div>    
