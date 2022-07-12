@@ -16,7 +16,13 @@ $curPage = 0;
         </div>
         <button type="submit" class="border-0 p-0 w-0 h-0"></button>
     </form>
-    
+
+    <?php if(isset($_GET['value'])):?>
+    <a href="<?=ROOT?>poll?page=0" class="mb-4 btn btn7 btn-block btn-lg">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to All Polls
+    </a>
+    <?php endif; ?>
+
     <button class="view-trending mb-1 btn btn6 btn-block btn-lg">
         <i class="fa fa-eye" aria-hidden="true"></i>
         View Top Trending Polls
@@ -32,6 +38,7 @@ $curPage = 0;
     <?php endif; ?>
     
     <?php if(!empty($polls)): ?>
+        <?php if(isset($_GET['page'])):?>
         <ul class="pagination mt-3">
             <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page=<?= $curPage > 0 ? $curPage-1 : $curPage ?>">Previous</a></li>
             <?php  
@@ -40,12 +47,17 @@ $curPage = 0;
                 $curPage = $page;
                 $page = $i+1;
                 $home = ROOT."poll";
-                echo "<li class='page-item'><a class='page-link btn6' href='$home?page=$i'>$page</a></li>";
+                if($i == $_GET['page']) {
+                    echo "<li class='page-item'><a class='page-link btn6' href='$home?page=$i'>$page</a></li>";
+                } else {
+                    echo "<li class='page-item'><a class='page-link btn5' href='$home?page=$i'>$page</a></li>";
+                }
             }
             ?>
             
             <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page=<?= $curPage < $numofpages - 1 ? $curPage+1 : $curPage ?>">Next</a></li>
         </ul>
+        <?php endif; ?>
         <div class="row mt-4">
             <?php foreach($polls as $poll): ?>
                 <div class="col-md-4 mb-4 d-flex">
@@ -72,6 +84,7 @@ $curPage = 0;
             <?php endforeach; ?>
             <nav aria-label="Page navigation example">
         </div>
+        <?php if(isset($_GET['page'])):?>
         <ul class="pagination">
             <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page=<?= $curPage > 0 ? $curPage-1 : $curPage ?>">Previous</a></li>
             <?php  
@@ -80,12 +93,19 @@ $curPage = 0;
                 $curPage = $page;
                 $page = $i+1;
                 $home = ROOT."poll";
-                echo "<li class='page-item'><a class='page-link btn6' href='$home?page=$i'>$page</a></li>";
+                if($i == $_GET['page']) {
+                    echo "<li class='page-item'><a class='page-link btn6' href='$home?page=$i'>$page</a></li>";
+                } else {
+                    echo "<li class='page-item'><a class='page-link btn5' href='$home?page=$i'>$page</a></li>";
+                }
+                
             }
             ?>
             
             <li class="page-item"><a class="page-link btn5" href="<?=ROOT?>poll?page=<?= $curPage < $numofpages - 1 ? $curPage+1 : $curPage ?>">Next</a></li>
         </ul>
+        <?php endif; ?>
+
 </nav>
     <?php else: ?>
         <div class="row">

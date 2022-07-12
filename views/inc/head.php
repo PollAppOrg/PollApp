@@ -5,7 +5,9 @@ function active($currect_page){
     $url = explode('?', end($url_array));
     array_pop($url);
     $url = end($url);
-
+    if($url == "search") {
+        $url = "poll";
+    }
   } else {
     $url = end($url_array);
   }

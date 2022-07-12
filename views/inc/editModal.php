@@ -31,10 +31,11 @@
           <input type="text" name="option2" value="<?=
           $poll['option_2']; ?>" class="form-control edit-title">
         
+          <?php CSRF::outputToken(); ?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
-          <?php CSRF::outputToken(); ?>  
+            
           <button type="submit" class="btn btn6 save-edit">Save changes</button>
         </div>
       </form>      

@@ -41,6 +41,7 @@ Router::post("poll/create", function() {
 });
 
 Router::post("poll/update", function() {
+    var_dump($_POST);
     $pollController = new PollController;
     $pollController->update($_POST);
 });

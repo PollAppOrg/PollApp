@@ -7,9 +7,7 @@ class Controller {
 
     // constructor
     public function __construct()
-    {
-        CSRF::checkToken($_POST);
-    
+    {    
         // bring db conn into the controller class
         $this->conn = DB::getConn();
     }

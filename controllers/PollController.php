@@ -6,6 +6,8 @@ class PollController extends Controller {
     // constructor
     public function __construct()
     {
+        CSRF::checkToken($_POST);
+
        // bring the db conn from parent Controller class
         parent::__construct();
     }
@@ -59,6 +61,8 @@ class PollController extends Controller {
     public function searchAndGetPolls($value) {
         $polls = new PollModel($this->conn);
         if($polls->fetchPollWithValue($value)->success()) {
+            $voteController = new VoteController;
+            $votes = $voteController;
             $polls = $polls->getPolls();
             include "views/poll.php";
         } else {
@@ -112,7 +116,7 @@ class PollController extends Controller {
     public function delete($poll) {
         $pollObj = new PollModel($this->conn);
         $pollObj->fetchPoll($poll['id']);
-        if($pollObj->poll['author_id'] == $_SESSION['user_id'] || $_SESSION['role'] == 1) {
+        if($_SESSION['role'] == 1 || $pollObj->poll['author_id'] == $_SESSION['user_id']) {
             if($pollObj->delete($poll['id'])->success()) {
                 Router::redirect("poll");
                 return true;

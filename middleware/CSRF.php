@@ -21,11 +21,12 @@ class CSRF {
     // output token as hidden input
     public static function outputToken() {
         if(!isset($_SESSION['token'])) {
-        self::createToken();
-        $_SESSION['token'] = self::$token;
+            self::createToken();
+            $_SESSION['token'] = self::$token;
         }
-        echo "<input type='hidden' name='token' value='" . self::$token . "'>";
+        echo "<input type='hidden' name='token' value=" . $_SESSION['token'] .">";
     }
+
     // check token
     public static function checkToken($req) {
         if(!empty($req)) {

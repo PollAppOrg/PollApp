@@ -3,6 +3,8 @@
 class UserController extends Controller {
     public function __construct()
     {
+        CSRF::checkToken($_POST);
+
         parent::__construct();
     }
 
