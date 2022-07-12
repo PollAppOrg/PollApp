@@ -32,7 +32,7 @@ class PollModel extends Model {
                 FROM polls
                 JOIN users ON users.id = polls.author_id
                 WHERE title LIKE ? OR username LIKE ?";
-        $value = '%' . $value . '%';
+        $value = '%' . strtolower($value) . '%';
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ss", $value, $value);
         $stmt->execute();
